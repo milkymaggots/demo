@@ -1,9 +1,10 @@
-stages:
-  - build
-
+# stages:
+#   - build
+variables:
+  GIT_STRATEGY: clone
 
 build_job:
-  stage: build
+  # stage: build
   # image: maven:3.8.4-openjdk-17-slim
   script:
     - echo "Building the project"
