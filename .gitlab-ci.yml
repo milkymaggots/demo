@@ -6,5 +6,5 @@ build_job:
   image: maven:3.8.4-openjdk-17-slim
   script:
     - echo "Building the project"
-  cache:
-    - maven
+  # cache:
+  #   - maven
