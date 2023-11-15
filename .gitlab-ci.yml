@@ -1,14 +1,10 @@
 stages:
   - build
-  - test
 
-job_build:
+build_job:
   stage: build
+  image: maven:3.8.4-openjdk-17-slim
   script:
     - echo "Building the project"
-    - echo "Hello, $GITLAB_USER_LOGIN!"
-
-job_test:
-  stage: test
-  script:
-    - echo "Running tests"
+  cache:
+    - maven
