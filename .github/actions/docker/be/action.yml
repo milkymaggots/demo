@@ -1,0 +1,15 @@
+name: 'docker build'
+description: 'BE'
+inputs:
+  app-path:
+    description: 'path of service to build'
+    # required: true
+    # default: 'World'
+outputs:
+  time:
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.app-path }}

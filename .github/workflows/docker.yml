@@ -1,12 +1,15 @@
 on: [push]
 
 jobs:
-  try_docker:
+  build-be:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/try_docker
-        id: try_docker
+      - uses: ./.github/actions/docker/be
+        id: build-be
         with:
-          who-to-greet: maximka
-          service_path: my-app
+          app-path: my-app
+  # deploy-be:
+  #   name: BE
+  #   needs: [build-be]
+  #   runs-on: ubuntu-latest

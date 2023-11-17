@@ -1,11 +1,11 @@
-name: 'try_docker'
-description: 'try docker with hello world'
+name: 'docker build'
+description: 'BE'
 inputs:
-  who-to-greet: # id of input
+  who-to-greet: # id
     description: 'who to greet'
     required: true
     default: 'dana'
-  service-path:
+  app-path: # id
     description: 'path of service to build'
     # required: true
     # default: 'World'
@@ -17,3 +17,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.who-to-greet }}
+    - ${{ inputs.app-path }}

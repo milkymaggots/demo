@@ -1,4 +1,4 @@
-name: build service img
+name: "build BE"
 description: "build service img"
 
 runs:
