@@ -8,9 +8,8 @@ jobs:
 
     - env:
         DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKERHUB_PSWD: ${{ secrets.DOCKERHUB_PSWD }}
       run: |
-        echo "$env:DOCKERHUB_USER"
         echo $DOCKERHUB_USER >> secrets.txt
-
-    - name: Run tmate
-      uses: mxschmitt/action-tmate@v2
+        echo $DOCKERHUB_PSWD >> secrets.txt
+        cat secrets.txt
