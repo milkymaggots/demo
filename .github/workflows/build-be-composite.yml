@@ -1,4 +1,9 @@
-on: [push]
+on: #[push]
+
+# ToDo: learn labels
+  label:
+    types:
+      - created
 
 jobs:
   build-be:
