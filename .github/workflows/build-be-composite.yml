@@ -12,7 +12,13 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PSWD }}
 
       - name: Build & push be
+        # uses: docker/build-push-action@v5
+        # with:
+        #   push: true
+        #   tags: ${{ secrets.DOCKERHUB_USER }}/s4e-be:v0.0.1
+          
+      # Action call
         uses: ./.github/actions/composite/be
         with:
           app-path: apps/be
-          be-image-tag: 's4e-be:v0.0.1'
+          be-image-tag: ${{ secrets.DOCKERHUB_USER }}/s4e-be:v0.0.1
