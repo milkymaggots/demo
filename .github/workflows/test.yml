@@ -1,15 +1,23 @@
 on: push
 
 jobs:
-  ok:
+  job1:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
     steps:
-    - uses: actions/checkout@v4
-
-    - env:
+    - id: step1
+      env:
         DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
         DOCKERHUB_PSWD: ${{ secrets.DOCKERHUB_PSWD }}
       run: |
+        echo "test=hello" >> "$GITHUB_OUTPUT"
         echo $DOCKERHUB_USER >> secrets.txt
+        echo $DOCKERHUB_USER >> "$GITHUB_OUTPUT"
         echo $DOCKERHUB_PSWD >> secrets.txt
-        cat secrets.txt
+        echo $DOCKERHUB_PSWD >> "$GITHUB_OUTPUT"
+        cat secrets.txt >> "$GITHUB_OUTPUT"
+    - id: step2
+      env:
+        OUTPUT1: ${{needs.job1.outputs.output1}}
+      run: echo "$OUTPUT1"
