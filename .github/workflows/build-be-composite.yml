@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  build-be:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/composite/be
+        id: build-be-composite
+        with:
+          app-path: apps/be
+          be-image-tag: 's4e-be:v0.0.1'

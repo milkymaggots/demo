@@ -1,0 +1,19 @@
+name: "build-be-composite"
+description: "build BE img"
+
+runs:
+  using: composite
+  steps:
+    - uses: docker/setup-buildx-action@v3
+    - run: docker build -t ${{ inputs.be-image-tag }} .
+      working-directory: ${{ inputs.app-path }}
+      shell: sh
+    - uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USER }}
+        password: ${{ secrets.DOCKERHUB_PSWD }}    
+    - run: docker push ${{ inputs.be-image-tag }}
+      shell: sh
+    - id: get-digest
+      run: echo "digest=$(docker inspect --format='{{index .RepoDigests 0}}' ${{ inputs.be-image-tag }})" >> "$GITHUB_OUTPUT"
+      shell: sh

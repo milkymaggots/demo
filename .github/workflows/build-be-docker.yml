@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/docker/be
-        id: build-be
+        id: build-be-docker
         with:
           app-path: my-app
   # deploy-be:
