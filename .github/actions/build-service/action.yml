@@ -1,0 +1,13 @@
+name: build service img
+description: "build service img"
+
+runs:
+  using: composite # todo: try to move to docker
+  steps:
+    # - uses: actions/checkout@v4
+    - uses: docker/setup-buildx-action@v3
+    # - run: pwd; ls -la; ls -la ../; ls -la ../../; ls -la ../../../
+    #   shell: sh
+    - run: docker build . # -f ${{ inputs.dockerfile }} -t ${{ inputs.docker_image_tag }} .
+      working-directory: ${{ inputs.service_path }}
+      shell: sh
