@@ -1,0 +1,4 @@
+# - uses: actions/checkout@v4
+# - run: pwd; ls -la; ls -la ../; ls -la ../../; ls -la ../../../
+#   shell: sh
+# - run: docker build . # -f ${{ inputs.dockerfile }} -t ${{ inputs.docker_image_tag }} .

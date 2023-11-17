@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  try_docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/try_docker
+        id: try_docker
+        with:
+          who-to-greet: maximka
+          service_path: my-app
